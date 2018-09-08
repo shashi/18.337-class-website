@@ -1,0 +1,85 @@
+<!doctype html>
+    <head>
+        <title id ="top">MIT 18.337 - Modern Numerical Computing</title>
+        <link rel="stylesheet" href="https://unpkg.com/tachyons@4.10.0/css/tachyons.min.css"/>
+    </head>
+    <body class="sans-serif">
+        <div class="center w-80 center">
+            <div class="f4 b mt4">MIT 18.337/6.338</div>
+            <h1 class="f2" >Modern Numerical Computing</h1>
+            <div>
+                <div class="link dim f4 fl pr2 ma1 b"><a href="/" style="text-decoration:none">Home</a></div>
+                <div class="link dim f4 fl pr2 ma1 b"><a href="/#lec" style="text-decoration:none">Lectures</a></div>
+                <div class="link dim f4 fl pr2 ma1 b"><a href="/#hw" style="text-decoration:none">Homework</a></div>
+                <div class="link dim f4 fl pr2 ma1 b"><a href="/#proj" style="text-decoration:none">Projects</a></div>
+                <div class="link dim f4 fl pr2 ma1 b"><a href="/#previous" style="text-decoration:none">Previous classes</a></div>
+            </div>
+            <br/>
+            <br/>
+            <br/>
+            <div>
+                <h2> Homework 1 </h2>
+                <h4> Problem 1: Getting started </h4>
+                <p>
+                This section will help you set up the <a href="https://julialang.org/">Julia programming language</a> on your system.
+                    <ol>
+                        <li>Download and install Julia v1.0 from the <a href="https://julialang.org/downloads/">downloads</a> page. Platform specific instructions also <a href = "https://julialang.org/downloads/platform.html">available</a>.</li>
+                        <li>Find your Julia executable and then open it up. Type "1+1" and hit Enter, to check if your installation works.
+                    </ol>
+                </p>
+                <h4> Problem 2: Installing Jupyter </h4>
+                
+                <p>
+                This section will help you install the Jupyter programming environment. Open up Julia and type the following commands:
+                <br>
+                <br>
+                <code>
+                    using Pkg
+                    <br>
+                    Pkg.add("IJulia")
+                </code>
+                <br>
+                <br>
+                This should install the <a href="https://github.com/JuliaLang/IJulia.jl">IJulia package</a> onto your system. 
+                Once it installs, execute the following: 
+                <br>
+                <br>
+                <code>
+                    using IJulia
+                    <br>
+                    notebook()
+                </code>
+                <br>
+                <br>
+                This should open up a new window in your browser with the Jupyter interface. 
+                </p>
+                <h3> Problem 3: Running the lecture and homework notebooks </h3>
+                <p>
+                Most, if not all the course material will uploaded to the course's <a href="https://github.com/alanedelman/18.337_2018">git repository.</a>
+                To download it onto your computer, the easiest thing to do is <a href="">download git</a> and then run the following command: 
+                <br>
+                <br>
+                <code>
+                    git clone https://github.com/alanedelman/18.337_2018.git
+                </code>
+                <br>
+                <br>
+                This clones the git repository to your local computer. To run the notebooks, you can open up Julia, and execute these commands: 
+                <br>
+                <br>
+                <code>
+                    using IJulia
+                    <br>
+                    notebook(pwd = "/path/to/18.337/folder/")
+                </code>
+                <br>
+                <br>
+                where <code>"/path/to18.337/folder/"</code> is where you have cloned your git repository.
+                </p>
+                <p>
+                Try running the notebook titled <a href="https://github.com/alanedelman/18.337_2018/blob/master/Lectures/Lecture01_0905_Why_Julia%3F/Multiple%20dispatch-Roman%20numerals%20%26%20Functions.ipynb">"Multiple dispatch-Roman numerals & Functions.ipynb"</a> and make sure everything works.
+                </p>
+            </div>
+        </div>
+    </body>
+</html>
