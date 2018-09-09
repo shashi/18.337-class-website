@@ -20,14 +20,14 @@
             <br/>
             <div>
                 <h2> Homework 1 </h2>
-                <h4> Problem 1: (Do not hand in)  Set up Julia 1.0  on your computer  </h4>
+                <h4> Problem A: (Do not hand in)  Set up Julia 1.0  on your computer  </h4>
                 <p>
                     <ol>
                         <li> Download and install Julia v1.0 from the <a href="https://julialang.org/downloads/">downloads</a> page.  </li>
                         <li> Find your Julia executable and then open it up. Type "1+1" and hit Enter, to check if your installation works.
                     </ol>
                 </p>
-                <h4> Problem 2: (Do not hand in)  Install Jupyter </h4>
+                <h4> Problem B: (Do not hand in)  Install Jupyter </h4>
                 <p>
                 <code>
                     using Pkg
@@ -49,7 +49,7 @@
                 <br>
                 This should open up a new window in your browser with the Jupyter interface. 
                 </p>
-                <h3> Problem 3: (Do not hand in)  Running the lecture and homework notebooks </h3>
+                <h3> Problem C: (Do not hand in)  Run the lecture and homework notebooks </h3>
                 <p>
                 Most, if not all the course material will be uploaded to the course's <a href="https://github.com/alanedelman/18.337_2018">git repository.</a>
                 To download it onto your computer, the easiest thing to do is <a href="">download git</a> and then run the following command: 
@@ -73,8 +73,24 @@
                 where <code>"/path/to18.337/folder/"</code> is where you have cloned your git repository.
                 </p>
                 <p>
-                Try running the notebook titled <a href="https://github.com/alanedelman/18.337_2018/blob/master/Lectures/Lecture01_0905_Why_Julia%3F/Multiple%20dispatch-Roman%20numerals%20%26%20Functions.ipynb">"Multiple dispatch-Roman numerals & Functions.ipynb"</a> and make sure everything works.
+                Try running the notebook titled <a href="https://github.com/alanedelman/18.337_2018/blob/master/Lectures/Lecture01_0905_Why_Julia%3F/Multiple%20dispatch-Roman%20numerals%20%26%20Functions.ipynb">"Multiple dispatch-Roman numerals & Functions.ipynb"</a> and make sure everything works. 
+
+   Add something fun, or find something you don't yet understand and read the doc or experiment with it.   If it's cool share on piazza.
                 </p>
+                <h3> Problem 1: (hand in a pdf of a notebook)  Not dense, not sparse, ..., structured! </h3>
+                  Consider a matrix of the form M(v) = Diagonal(v) + vv', where v is a vector. Create a special type called Custom(v) which
+creates such a matrix.  Create a show method to print this matrix in dense format.  
+
+The largest eigenvalue of this matrix is the  zero of <br>
+f(c::Custom, λ) = 1 + sum(c.V[i]^2 / (c.D.diag[i] - λ) for i=1:length(c.V))
+<br> that is bigger than the largest element of v.  Try to construct an eigmax routine
+for this Custom type.  Consider Newton's method, bisection, or otherwise.
+
+Use the <a href="https://en.wikipedia.org/wiki/Sherman%E2%80%93Morrison_formula"> Sherman-Morrison </a> formula to create an inv method for such matrices.
+
+
+
+
             </div>
         </div>
     </body>
