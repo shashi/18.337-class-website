@@ -82,10 +82,11 @@
 creates such a matrix.  Create a show method to print this matrix in dense format.  
 
 The largest eigenvalue of this matrix is the  zero of <br>
-f(c::Custom, λ) = 1 + sum(c.V[i]^2 / (c.D.diag[i] - λ) for i=1:length(c.V))
+<code> f(c::Custom, λ) = 1 + sum(c.V[i]^2 / (c.D.diag[i] - λ) for i=1:length(c.V)) </code>
 <br> that is bigger than the largest element of v.  Try to construct an eigmax routine
 for this Custom type.  Consider Newton's method, bisection, or otherwise.
 
+<br>
 Use the <a href="https://en.wikipedia.org/wiki/Sherman%E2%80%93Morrison_formula"> Sherman-Morrison </a> formula to create an inv method for such matrices.
 
 
