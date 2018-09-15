@@ -71,7 +71,7 @@
                 </code>
                 <br>
                 <br>
-                where <code>"/path/to18.337/folder/"</code> is where you have cloned your git repository.
+                where <code>"/path/to/18.337/folder/"</code> is where you have cloned your git repository.
                 </p>
                 <p>
                 Try running the notebook titled <a href="https://github.com/alanedelman/18.337_2018/blob/master/Lectures/Lecture01_0905_Why_Julia%3F/Multiple%20dispatch-Roman%20numerals%20%26%20Functions.ipynb">"Multiple dispatch-Roman numerals & Functions.ipynb"</a> and make sure everything works. 
@@ -79,19 +79,20 @@
    Add something fun, or find something you don't yet understand and read the doc or experiment with it.   If it's cool share on piazza.
                 </p>
                 <h3> Problem 1: (hand in a pdf of a notebook)  Not dense, not sparse, ..., structured! </h3>
-                  Consider a matrix of the form M(v) = Diagonal(v) + vv', where v is a vector. Create a special type called Custom(v) which
-creates such a matrix.  Create a show method to print this matrix in dense format.  
+                <p> Consider a matrix of the form <code> M(v) = Diagonal(v) + vv' </code>, where v is a vector.</p>
 
-The largest eigenvalue of this matrix is the  zero of <br>
-<code> f(c::Custom, λ) = 1 + sum(c.V[i]^2 / (c.D.diag[i] - λ) for i=1:length(c.V)) </code>
-<br> that is bigger than the largest element of v.  Try to construct an eigmax routine
-for this Custom type.  Consider Newton's method, bisection, or otherwise.
+                <p>Create a special type called <code>Custom(v) </code> which creates such a matrix. 
+                Create a show method to print this matrix in dense format. </p>
 
-<br>
-Use the <a href="https://en.wikipedia.org/wiki/Sherman%E2%80%93Morrison_formula"> Sherman-Morrison </a> formula to create an inv method for such matrices.
+                <p> The largest eigenvalue of this matrix is the zero of: </p>
+                <p><code> f(c::Custom, lambda) = 1 + sum(c.v[i]^2 / (c.D.diag[i] - lambda) for i=1:length(c.v)) </code></p>
 
+                <p> that is bigger than the largest element of <code>v</code>. </p>
+                
+                <p>Try to construct an <code>eigmax</code> routine for this Custom type.  Consider Newton's method, bisection, or otherwise.</p>
 
-
+                <p>
+                Use the <a href="https://en.wikipedia.org/wiki/Sherman%E2%80%93Morrison_formula"> Sherman-Morrison </a> formula to create an <code>inv</code> method for such matrices.</p>
 
             </div>
         </div>
