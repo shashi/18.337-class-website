@@ -3,6 +3,19 @@
     <head>
         <title id ="top">MIT 18.337 - Modern Numerical Computing</title>
         <link rel="stylesheet" href="https://unpkg.com/tachyons@4.10.0/css/tachyons.min.css"/>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.0-rc.1/dist/katex.min.css" integrity="sha384-D+9gmBxUQogRLqvARvNLmA9hS2x//eK1FhVb9PiU86gmcrBrJAQT8okdJ4LMp2uv" crossorigin="anonymous">
+
+    <!-- The loading of KaTeX is deferred to speed up page rendering -->
+        <script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.0-rc.1/dist/katex.min.js" integrity="sha384-483A6DwYfKeDa0Q52fJmxFXkcPCFfnXMoXblOkJ4JcA8zATN6Tm78UNL72AKk+0O" crossorigin="anonymous"></script>
+
+    <!-- To automatically render math in text elements, include the auto-render extension: -->
+        <script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.0-rc.1/dist/contrib/auto-render.min.js" integrity="sha384-yACMu8JWxKzSp/C1YV86pzGiQ/l1YUfE8oPuahJQxzehAjEt2GiQuy/BIvl9KyeF" crossorigin="anonymous"
+        onload="renderMathInElement(document.body);"></script>
+        <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        renderMathInElement(document.body);
+    });
+        </script>
     </head>
     <body class="sans-serif">
         <div class="center w-80 center">
@@ -84,8 +97,9 @@
                 <p>Create a special type called <code>Custom(v) </code> which creates such a matrix. 
                 Create a show method to print this matrix in dense format. </p>
 
-                <p> The largest eigenvalue of this matrix is the zero of: </p>
-                <p><code> f(c::Custom, lambda) = 1 + sum(c.v[i]^2 / (c.D.diag[i] - lambda) for i=1:length(c.v)) </code></p>
+                <p> The largest eigenvalue of this matrix is the zero of </p>
+
+                <p> $$ f(\lambda) =  1 + \sum_{i=1}^{N} \frac{{v_i}^2}{v_i - \lambda} $$ </p>
 
                 <p> that is bigger than the largest element of <code>v</code>. </p>
                 
