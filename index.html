@@ -20,6 +20,7 @@
             <div >
                 <h3> Announcements </h3>
                 <ol>
+                    <li> 9/30: Check out the <a href="#colab">note</a> on using Google Colab to run your notebooks.</li>
                     <li> 9/27: <a href="hw/hw3/">Homework 3</a> due Wednesday October 3  is up. </li>
                     <li> 9/18: <a href="hw/hw2/">Homework 2</a> due Monday September 24  is up. </li>
                     <li> 9/12: Office Hours are on Thursday from 4 PM - 5:30 PM at the Julia Lab (Building 32-G, 7th Floor). Enter Stata, find the Gates tower, come to the 7th floor, and follow the directions to the Julia lab. </li>
@@ -62,6 +63,10 @@
                     <li>Install Julia 1.0 on your laptop (platform specific instructions) </li>
                     <li>We recommend using Julia via Juno, VSCode or Jupyter</li>
                 </ol>
+                <h4 id="colab">Using Google Colab</h4>
+                <p> Students who would like to run the notebooks on GPUs can do so via <a href="https://colab.research.google.com/notebooks/welcome.ipynb">Google Colab.</a> 
+                The machine learning notebooks are available on <a href="https://drive.google.com/drive/folders/19D-R31unxZV_PUYYYpCfd-gnbdUiZfNb">Google Drive</a>, provided you install Julia on Colab via the <a href="https://github.com/denizyuret/Knet.jl/blob/dy/1.1/tutorial/colab_install_julia.ipynb">colab_install_julia</a> notebook.
+                </p>
                 <h3> Office Hours </h3>
                 <p> TAs will be available at the JuliaLab in CSAIL every Thursday from 4 PM to 5:30 PM. To get there, go to Stata (Building 32), find the Gates Building and take the lift to the 7th floor. You will find directions to the Julia Lab on the walls. If these office hours are inconvenient, just walk up to the TAs and they'll help you. </p>
                 <p> <b>Update:</b> We just realised that the office hours are inconvenient for some people. You can contact the TA at ranjanan AT mit DOT edu and speak separately about any questions or issues.</p>
@@ -73,31 +78,50 @@
             <hr>
             <h2 class="f3" id="lec">Lectures</h2>
             <table class="collapse ba br2 b--black-10 pv2 ph3 mt4">
-              <tbody><tr class="striped--near-white "><th class="pv2 ph3 tl f6 fw6 ttu w-20">Date</th><th class="tl f6 ttu fw6 pv2 ph3 w-40">Topic</th><th class="tl f6 ttu fw6 pv2 ph3"> Required Reading  </th><th class="tr f6 ttu fw6 pv2 ph3"></th></tr>
-
-                  <tr class="striped--near-white "><td class="pv2 ph3"> Lecture 1 9/5</td>
-                  <td class="pv2 ph3"><a href="https://github.com/alanedelman/18.337_2018/tree/master/Lectures/Lecture01_0905_Why_Julia">Why Julia?</a></td>
-                  <td class="pv2 ph3"><a href="https://arxiv.org/abs/1411.1607"> Julia: A Fresh Approach to Numerical Computing</td></tr>
-
-              <tr class="striped--near-white "><td class="pv2 ph3">  Lecture 2 9/10</td>
-                  <td class="pv2 ph3"><a href="https://github.com/KnetML/NLPdemos"> Natural Language Processing Demos </a> <br>
-                  <a href="https://github.com/denizyuret/Knet.jl/tree/dy/1.1/tutorial"> Machine Learning Tutorials 2 and 3 </a>
-
-</td>
-                  <td class="pv2 ph3"></td><td class="pv2 ph3"></td></tr>
-
-
-              <tr class="striped--near-white "><td class="pv2 ph3"> Lecture 3 9/12</td>
-   <td class="pv2 ph3"><a href="https://github.com/alanedelman/18.337_2018/tree/master/Lectures/Lecture03_0912_Julia_is_Fast">  Julia is Fast, Polymorphism, Generic Programming </a>  </td>
-   <td class="pv2 ph3"> <a href="https://julialang.org/blog/2012/02/why-we-created-julia"> Why we created Julia </a> </td></tr> 
-              <tr class="striped--near-white "><td class="pv2 ph3"> Lecture 4 9/17</td>
-<td class="pv2 ph3">
- <a href="https://github.com/alanedelman/18.337_2018/tree/master/Lectures/Lecture04_0917_GPUs_and_Distributed"> GPU and Distributed </a></td><td class="pv2 ph3"></td>
-<td class="pv2 ph3"> </td>
-</tr>
-              <tr class="striped--near-white "><td class="pv2 ph3"> Lecture 5 9/19</td><td class="pv2 ph3"></td><td class="pv2 ph3"></td><td class="pv2 ph3"></td></tr>
-              <tr class="striped--near-white "><td class="pv2 ph3"> Lecture 6 9/24</td><td class="pv2 ph3"></td><td class="pv2 ph3"></td><td class="pv2 ph3"></td></tr>
-              <tr class="striped--near-white "><td class="pv2 ph3"> Lecture 7 9/26</td><td class="pv2 ph3"></td><td class="pv2 ph3"></td><td class="pv2 ph3"></td></tr>
+              <tbody><tr class="striped--near-white ">
+                      <th class="pv2 ph3 tl f6 fw6 ttu w-20">Date</th>
+                      <th class="tl f6 ttu fw6 pv2 ph3 w-40">Topic</th>
+                      <th class="tl f6 ttu fw6 pv2 ph3"> Required Reading</th>
+                      <th class="tr f6 ttu fw6 pv2 ph3"></th>
+                  </tr>
+                  <tr class="striped--near-white ">
+                      <td class="pv2 ph3"> Lecture 1 9/5</td>
+                      <td class="pv2 ph3"><a href="https://github.com/alanedelman/18.337_2018/tree/master/Lectures/Lecture01_0905_Why_Julia">Why Julia?</a></td>
+                      <td class="pv2 ph3"><a href="https://arxiv.org/abs/1411.1607"> Julia: A Fresh Approach to Numerical Computing</td>
+                  </tr>
+                  <tr class="striped--near-white ">
+                      <td class="pv2 ph3">  Lecture 2 9/10</td>
+                      <td class="pv2 ph3"><a href="https://github.com/KnetML/NLPdemos"> Natural Language Processing Demos </a> <br>
+                  <a href="https://github.com/denizyuret/Knet.jl/tree/dy/1.1/tutorial"> Machine Learning Tutorials 2 and 3 </a></td>
+                      <td class="pv2 ph3"></td><td class="pv2 ph3"></td>
+                  </tr>
+                  <tr class="striped--near-white ">
+                      <td class="pv2 ph3"> Lecture 3 9/12</td>
+                      <td class="pv2 ph3"><a href="https://github.com/alanedelman/18.337_2018/tree/master/Lectures/Lecture03_0912_Julia_is_Fast">  Julia is Fast, Polymorphism, Generic Programming </a>  </td>
+                       <td class="pv2 ph3"> <a href="https://julialang.org/blog/2012/02/why-we-created-julia"> Why we created Julia </a></td>
+                  </tr> 
+                  <tr class="striped--near-white ">
+                      <td class="pv2 ph3"> Lecture 4 9/17</td>
+                      <td class="pv2 ph3"><a href="https://github.com/alanedelman/18.337_2018/tree/master/Lectures/Lecture04_0917_GPUs_and_Distributed"> GPU and Distributed </a></td><td class="pv2 ph3"></td>
+                        <td class="pv2 ph3"> </td>
+                  </tr>
+                  <tr class="striped--near-white ">
+                      <td class="pv2 ph3"> Lecture 5 9/19</td>
+                      <td class="pv2 ph3"><a href="https://github.com/denizyuret/Knet.jl/tree/dy/1.1/tutorial">Machine Learning Tutorials 4 and 5<br>(Multi-layer Perceptrons and Convolutional Nets)</a></td>
+                      <td class="pv2 ph3"></td>
+                      <td class="pv2 ph3"></td>
+                  </tr>
+                  <tr class="striped--near-white">
+                      <td class="pv2 ph3">Lecture 6 9/24</td>
+                      <td class="pv2 ph3"><a href="https://github.com/alanedelman/18.337_2018/tree/master/Lectures/Lecture06_0924_Macros">Macros and Metaprogramming</a></td>
+                      <td class="pv2 ph3"><a href ="https://www.youtube.com/watch?v=wpV0Nz-93Hk">Latexify.jl (JuliaCon 2018)</a></td>
+                      <td class="pv2 ph3"></td></tr>
+                  <tr class="striped--near-white ">
+                      <td class="pv2 ph3"> Lecture 7 9/26</td>
+                      <td class="pv2 ph3"><a href = "https://github.com/denizyuret/Knet.jl/tree/dy/1.1/tutorial">Machine Learning Tutorials 6, 7, and 8<br>(Recurrent Nets)</a></td>
+                      <td class="pv2 ph3"><a href="https://www.youtube.com/watch?v=21_wokgnNog&feature=youtu.be&t=3">Machine Learning in Julia (JuliaCon 2018)</a></td>
+                      <td class="pv2 ph3"></td>
+                  </tr>
               <tr class="striped--near-white "><td class="pv2 ph3"> Lecture 8 10/1</td><td class="pv2 ph3"></td><td class="pv2 ph3"></td><td class="pv2 ph3"></td></tr>
               <tr class="striped--near-white "><td class="pv2 ph3"> Lecture 9 10/3</td><td class="pv2 ph3"></td><td class="pv2 ph3"></td><td class="pv2 ph3"></td></tr>
               <tr class="striped--near-white "><td class="pv2 ph3"> No Lecture 10/8</td><td class="pv2 ph3">Holiday (Columbus Day)</td><td class="pv2 ph3"></td><td class="pv2 ph3"></td></tr>
