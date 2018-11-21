@@ -1,0 +1,148 @@
+ <!doctype html>
+
+    <head>
+        <title id ="top">MIT 18.337 - Modern Numerical Computing</title>
+        <link rel="stylesheet" href="https://unpkg.com/tachyons@4.10.0/css/tachyons.min.css"/>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.0-rc.1/dist/katex.min.css" integrity="sha384-D+9gmBxUQogRLqvARvNLmA9hS2x//eK1FhVb9PiU86gmcrBrJAQT8okdJ4LMp2uv" crossorigin="anonymous">
+
+    <!-- The loading of KaTeX is deferred to speed up page rendering -->
+        <script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.0-rc.1/dist/katex.min.js" integrity="sha384-483A6DwYfKeDa0Q52fJmxFXkcPCFfnXMoXblOkJ4JcA8zATN6Tm78UNL72AKk+0O" crossorigin="anonymous"></script>
+
+    <!-- To automatically render math in text elements, include the auto-render extension: -->
+        <script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.0-rc.1/dist/contrib/auto-render.min.js" integrity="sha384-yACMu8JWxKzSp/C1YV86pzGiQ/l1YUfE8oPuahJQxzehAjEt2GiQuy/BIvl9KyeF" crossorigin="anonymous"
+        onload="renderMathInElement(document.body);"></script>
+        <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        renderMathInElement(document.body);
+    });
+        </script>
+    </head>
+    <body class="sans-serif">
+        <div class="center w-80 center">
+            <div class="f4 b mt4">MIT 18.337/6.338</div>
+            <h1 class="f2" >Modern Numerical Computing</h1>
+            <div>
+                <div class="link dim f4 fl pr2 ma1 b"><a href="../../" style="text-decoration:none">Home</a></div>
+                <div class="link dim f4 fl pr2 ma1 b"><a href="../../#lec" style="text-decoration:none">Lectures</a></div>
+                <div class="link dim f4 fl pr2 ma1 b"><a href="../../#hw" style="text-decoration:none">Homework</a></div>
+                <div class="link dim f4 fl pr2 ma1 b"><a href="../../#proj" style="text-decoration:none">Projects</a></div>
+                <div class="link dim f4 fl pr2 ma1 b"><a href="../../#previous" style="text-decoration:none">Previous classes</a></div>
+                <div class="link dim f4 fl pr2 ma1 b"><a href="https://piazza.com/class/jlplg2001784it" style="text-decoration:none">Piazza</a></div>
+            </div>
+            <br/>
+            <br/>
+            <br/>
+            <div>
+                <h2> Homework 4 </h2>
+                <h3>Part 1: How fast is a distributed SVD?</h3>
+                <p> 
+                The computation of the SVD is dominated by the <code>8/3n^3</code> floating point operations 
+                required by the Householder reduction of the matrix to bidiagonal form (for simplicity, 
+                we assume that the matrix is square). The actual count includes lower order terms but they 
+                are typically ignored. Assuming (wrongly) that the algorithm can be perfectly parallelized, 
+                it would be possible to reduce the number of operations for each process to <code>8/3*n^3/p </code>for p processes. 
+                Parallel algorithms have to communicate between processes but the communication complexity is roughly 
+                proportional to the size of the matrix, i.e. of the order <code>n^2 </code>and will therefore be dominated 
+                by the floating point operations for sufficiently large matrices. However, the speed of floating 
+                operations is much faster than memory operations which are again faster than network operations. 
+                Hence, in most practical applications of parallel linear algorithms, the lower order terms can’t 
+                be ignored and the communication costs often influence the design and choice of parallel algorithm 
+                such algorithms with a higher number of floating points end up being preferred because there is less 
+                communication between the processes.</p>
+
+                <p>
+                The communication costs associated with parallel algorithms means that there is a crossover point 
+                at which the parallel algorithms becomes faster. We can approximate this crossover point by using 
+                the units of a floating point operation to measure the run time of an algorithm. In these units, 
+                the run time time of sequential algorithm is simply <code>8/3*n^3</code> whereas the parallel 
+                algorithm runs in <code>8/3*n^3/p + C*n^2 </code>time where C is the relative cost of communication 
+                compared to floating point operations. Notice that C also includes details specific to the algorithm 
+                such this it will be higher for algorithms that require more communication. E.g. for a parallel LU 
+                algorithm, C will be much smaller than the C associated with a parallel algorithm for reduction to 
+                bidiagonal form. Hence, it is expected that the crossover point for the LU is lower than it is for 
+                the SVD. From the two cost expressions, it is also clear that if communication (memory or network 
+                operations) becomes slower relative to the processor then the crossover point will become larger. 
+                Indeed, the speed development of processors have been much more rapid than memory and networks over 
+                time so over time, the crossover point has grown.
+
+                Distributed linear algebra libraries such as Elemental and ScaLAPACK have had implementations of 
+                parallel SVD solvers for a long time. This should allow for faster computation of the SVD on systems 
+                with more than a single core. Since almost all computers now have more than a single computational core, 
+                it should be possible to test the speedup even on laptop.
+                </p>
+
+                <h4>Exercises</h4>
+                <p>In the following, we will use Julia to measure the parallel implementations of LU and SVD in Elemental 
+                and compare to the sequential implementation in LAPACK. Before measuring the different implementations 
+                write down your expectations to the scaling and revisit after the runs. Try to explain the results. 
+                You can create the timings on any system of your choice, laptop, big shared memory machine, a cluster 
+                or cloud instances. Please specify all relevant details of the system and discuss how the system 
+                might influence the results. Make sure to disable multithreading with Julia’s <code>BLAS.set_num_threads(1)</code> 
+                (remember to do <code>using LinearAlgebra</code> first) to avoid any interaction from multithreaded BLAS operations.</p>
+
+                <p>
+                The parallel implementations are from the Elemental library. It is implemented in C++ but has a C API 
+                as well as Julia and Python wrappers. You can install the Julia wrappers by adding the Elemental package. 
+                It will automatically download and build Elemental on your machine so it will take a while to finish. 
+                If you prefer to use C, C++, or Python you can download the sources from http://libelemental.org and 
+                build the library on your own. The Julia wrappers are currently sparsely documented but follows the 
+                C API closely so it should be possible use the wrappers based on the official documentation for the 
+                C API together with reading the source of the Julia wrappers at 
+                https://github.com/JuliaParallel/Elemental.jl.
+                </p>
+
+                <p>
+                The Elemental library is based on MPI so it is required that there is a working MPI installation 
+                available on the system where you are creating the timings. If you use your Mac for the timings, 
+                then notice that only OpenMPI is supported. To test on multiple processes, you’d have launch you 
+                script with <code>mpirun</code>. E.g.
+                </p>
+
+                <p><code>
+                mpirun -np 4 julia time_lu.jl
+                </code></p>
+
+                <h4>Examples</h4>
+                The following examples are based on the Julia wrappers. All programs will have to start by initializing Elemental and end with finalizing the library. In Julia, it is done with
+
+                <p><code>
+                    using Elemental</br>
+
+                    Elemental.Init()</br>
+
+            ...your program...</br>
+
+            Elemental.Finalize()</br>
+                </code></p>
+
+                <p>You can create a distributed Elemental matrix (DistMatrix) with Float64 elements  with</p>
+
+                <p><code>A = Elemental.DistMatrix(Float64)</code></p>
+
+                <p>Notice that Elemental matrices are not initialized with a size. Instead the size is passed when filling the array. E.g. with Gaussian random variables as in</p>
+
+                <p><code>
+                Elemental.gaussian(A, 100, 100)
+                </code></p>
+
+                <h4>Problem 1</h4>
+                Julia's <code>LAPACK.gebrd! </code> reduces a matrix to bidiagonal form. (Remember to load Julia’s LinearAlgebra module first). Use random matrices to time <code>gebrd!</code>. Compare to <code>svdvals</code> and identify when the bidiagonal reduction dominates the computation. Plot the relative timings a a function of the matrix size.
+
+                <h4>Problem 2</h4>
+                Next we will time the parallel LU from Elemental. Write a program that calls Elemental's LU on a <code>DistMatrix</code> and time it for square matrices and double the size of the matrix until you run out of memory. Notice that Julia's <code>lu</code> function will automatically dispatch to Elemental’s LU solver when called on an <code>Elemental.DistMatrix</code>. Make an informative plot of the timings.
+
+                <h4>Problem 3</h4>
+                Now make similar timings for Elemental’s SVD. As in the last example, you can simply use Julia's <code>svdvals</code> function on an Elemental.DistMatrix. Make an informative plot of the timings.
+
+
+                Be sure to list the machine you are using, and try to use n, 2n, 4n, 8n pushing the limits of the memory of your machine.  What do you observe. If possible try to get a hold of the biggest machine you can get your hands on.
+
+
+                <h3>Part 2</h3>
+
+                <p><strong>Deadline for submitting both parts is Wednesday, 28th November at 11:59 PM. </strong></p>
+
+            </div>  
+        </div>
+    </body>
+</html>
