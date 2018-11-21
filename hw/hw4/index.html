@@ -132,13 +132,20 @@
                 Next we will time the parallel LU from Elemental. Write a program that calls Elemental's LU on a <code>DistMatrix</code> and time it for square matrices and double the size of the matrix until you run out of memory. Notice that Julia's <code>lu</code> function will automatically dispatch to Elemental’s LU solver when called on an <code>Elemental.DistMatrix</code>. Make an informative plot of the timings.
 
                 <h4>Problem 3</h4>
-                Now make similar timings for Elemental’s SVD. As in the last example, you can simply use Julia's <code>svdvals</code> function on an Elemental.DistMatrix. Make an informative plot of the timings.
-
+                Now make similar timings for Elemental's SVD. As in the last example, you can simply use Julia's <code>svdvals</code> function on an Elemental.DistMatrix. Make an informative plot of the timings.
 
                 Be sure to list the machine you are using, and try to use n, 2n, 4n, 8n pushing the limits of the memory of your machine.  What do you observe. If possible try to get a hold of the biggest machine you can get your hands on.
 
-
                 <h3>Part 2</h3>
+                <p>This problem is researchy. Maybe there is no good answer.
+    I was hoping that one might use the GSVD to morph one photo
+    to another or at least on one end, one photo looks good and on
+    another end, another photo looks good.</p>
+
+                <p>When I tried it, the clipping from 0 to 1 just seemed to ruin the whole thing.
+                What do you think is a fix to this, if any? The best solutions could make a paper.</p>
+                
+                Refer to <a href = "/hw/hw4/GSVD.ipynb">this notebook</a> for more details.
 
                 <p><strong>Deadline for submitting both parts is Wednesday, 28th November at 11:59 PM. </strong></p>
 
